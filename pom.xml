@@ -18,6 +18,10 @@
       <module>cloud-consumerConsul-order</module>
       <module>cloud-providerZookeeper-payment8004</module>
     <module>cloud-consumerZk-order80</module>
+      <module>cloud-consumer-feign-order</module>
+      <module>cloud-provider-hystrix-payment8001</module>
+      <module>cloud-consumer-feign-hystrix-order80</module>
+      <module>cloud-consumer-hystrix-dashboard</module>
   </modules>
   <packaging>pom</packaging>
 

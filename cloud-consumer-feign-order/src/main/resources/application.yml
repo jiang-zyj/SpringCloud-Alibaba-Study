@@ -1,0 +1,27 @@
+server:
+  port: 80
+
+# eureka 集群
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.om:7002/eureka
+
+# 超时设置，feign默认是一秒钟后没有读取到数据就报错，如果有业务的确需要超过一秒钟之后才能返回数据
+# 这里我们就需要设置超时时间
+
+# 设置feign客户端超时时间(OpenFeign默认支持ribbon)
+ribbon:
+  # 指的是建立连接所用的时间，适用于网络状况正常的情况下，两端连接的时间
+  ReadTimeout: 5000
+  # 指的是建立连接后从服务器读取到可用资源所用的时间
+  ConnectTimeout: 5000
+
+
+# 开启日志的Feign客户端
+logging:
+  level:
+    # feign日志以什么级别监控哪个接口
+    com.zyj.springCloud.service.PaymentFeignService: debug
