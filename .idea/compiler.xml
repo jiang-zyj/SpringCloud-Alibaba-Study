@@ -28,6 +28,7 @@
         <module name="cloud-consumer-hystrix-dashboard9001" />
         <module name="cloud-consumer-hystrix-dashboard9003" />
         <module name="cloudalibaba-provider-payment9004" />
+        <module name="SnowFlake" />
         <module name="cloudalibaba-provider-payment9003" />
         <module name="cloud-eureka-server" />
         <module name="cloudalibaba-provider-payment9002" />
