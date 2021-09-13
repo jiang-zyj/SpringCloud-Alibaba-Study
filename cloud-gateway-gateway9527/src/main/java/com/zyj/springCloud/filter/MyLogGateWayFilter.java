@@ -23,7 +23,6 @@ import java.util.Date;
 @Slf4j
 public class MyLogGateWayFilter implements GlobalFilter, Ordered {
 
-
     /**
      * 过滤器
      * @param exchange

@@ -62,7 +62,8 @@ public class FlowLimitController {
 
     public String deal_testHotKey(String p1, String p2, BlockException e) {
         // sentinel系统默认的提示为：Blocked by Sentinel (flow limiting)
-        return "------deal_testHotKey失败,o(╥﹏╥)o";
+        
+        return "------deal_testHotKey失败,o(╥﹏╥)o\n" + e.getMessage();
     }
 
 

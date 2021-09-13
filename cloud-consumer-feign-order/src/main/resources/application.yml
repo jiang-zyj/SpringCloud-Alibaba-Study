@@ -7,7 +7,7 @@ eureka:
     register-with-eureka: false
     fetch-registry: true
     service-url:
-      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.om:7002/eureka
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
 
 # 超时设置，feign默认是一秒钟后没有读取到数据就报错，如果有业务的确需要超过一秒钟之后才能返回数据
 # 这里我们就需要设置超时时间

@@ -14,20 +14,14 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @Description:
  */
 @Component
+//@FeignClient(value = "CLOUD-PROVIDER-HYSTRIX-PAYMENT")
 @FeignClient(value = "CLOUD-PROVIDER-HYSTRIX-PAYMENT", fallback = PaymentFallbackService.class)
 public interface PaymentHystrixService {
-
-
 
     @GetMapping("/payment/hystrix/ok/{id}")
     public String paymentInfo_OK(@PathVariable("id") Integer id);
 
     @GetMapping("/payment/hystrix/timeout/{id}")
     public String paymentInfo_Timeout(@PathVariable("id") Integer id);
-
-//    @GetMapping("/consumer/payment/timeout/{id}")
-//    public String paymentInfo_TimeOut(@PathVariable("id") Integer id) {
-//
-//    }
 
 }

@@ -5,6 +5,14 @@
 <mapper namespace="com.zyj.springCloud.mapper.AccountMapper">
 
 
+    <resultMap id="BaseAccountMap" type="com.zyj.springCloud.bean.Account">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="total" property="total"/>
+        <result column="used" property="used"/>
+        <result column="residue" property="residue"/>
+    </resultMap>
+
     <update id="decrease">
         update t_account
         set total = total - #{money}, used = used + #{money}, residue = residue - #{money}

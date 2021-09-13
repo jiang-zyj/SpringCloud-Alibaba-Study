@@ -72,6 +72,7 @@ public class CircleBreakerController {
     //================== OpenFeign
     @Resource
     private PaymentService paymentService;
+
     @GetMapping(value = "/consumer/openFeign/{id}")
     public CommonResult<Payment> paymentSQL(@PathVariable("id") Long id) {
         return paymentService.paymentSQL(id);

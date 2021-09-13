@@ -25,7 +25,9 @@ public class OrderConsulController {
 
     @GetMapping("/consumer/payment/consul")
     public String getPayment() {
-        return restTemplate.getForObject(PAYMENT_URL + "/payment/consul/", String.class);
+        String result = restTemplate.getForObject(PAYMENT_URL + "/payment/consul/", String.class);
+        System.out.println("消费者调用支付服务(consul) ---> result: " + result);
+        return result;
     }
 
 }

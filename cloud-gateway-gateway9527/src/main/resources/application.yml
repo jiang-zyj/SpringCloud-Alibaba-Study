@@ -21,10 +21,10 @@ spring:
         - id: payment_route2
 #          uri: http://localhost:8001
           uri: lb://cloud-payment-service   # 匹配后提供服务的路由地址
-          # 演示Predicate
+          # 演示Predicate断言
           predicates:
             - Path=/payment/lb/**
-            - After=2021-08-07T18:20:53.585+08:00[Asia/Shanghai]
+#            - After=2021-08-07T18:20:53.585+08:00[Asia/Shanghai]
 #            - Before=After=2021-08-07T18:20:53.585+08:00[Asia/Shanghai]
 #            - Between=After=2021-08-07T18:20:53.585+08:00[Asia/Shanghai],After=2021-08-07T18:25:53.585+08:00[Asia/Shanghai]
 #            - Cookie=username, zzyy      # cookie，键值对
@@ -34,7 +34,7 @@ spring:
 
           # 演示 Filter
           filters:
-#            - AddRequestHeader=X-Request-red, blue # 过滤器工厂会在匹配的请求头上加上一对请求头，名称为X-Request-red，值为blue
+            - AddRequestHeader=X-Request-red, blue # 过滤器工厂会在匹配的请求头上加上一对请求头，名称为X-Request-red，值为blue
 
 eureka:
   instance:

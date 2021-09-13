@@ -45,7 +45,7 @@ public class OrderHystrixController {
     @HystrixCommand
     public String paymentInfo_Timeout(@PathVariable("id") Integer id) {
         // 测试客户端系统错误
-        int age = 10 / 0;
+//        int age = 10 / 0;
         // 测试超时(因为客户端只等1.5s，但是服务端要等3s，客户端不等了，就走自己的fallback方法)
         String result = paymentHystrixService.paymentInfo_Timeout(id);
         return result;

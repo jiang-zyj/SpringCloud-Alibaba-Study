@@ -21,17 +21,13 @@ public class PaymentService {
 
     /**
      * 正常访问，肯定OK
-     * @param id
-     * @return
      */
     public String paymentInfo_OK(Integer id) {
         return "线程池：" + Thread.currentThread().getName() + " paymentInfo_OK, id;" + "\t" + "O(∩_∩)O哈哈~";
     }
 
     /**
-     * 超时
-     * @param id
-     * @return
+     * 超时访问，演示降级
      */
     @HystrixCommand(fallbackMethod = "paymentInfo_TimeoutHandler",commandProperties = {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
@@ -41,11 +37,7 @@ public class PaymentService {
 //        int age = 10 / 0;
         // 测试超时的情况
         int timeNumber = 3;
-        try {
-            TimeUnit.SECONDS.sleep(timeNumber);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        try { TimeUnit.SECONDS.sleep(timeNumber); } catch (InterruptedException e) { e.printStackTrace(); }
         return "线程池：" + Thread.currentThread().getName() + " paymentInfo_TimeOut, id;" + "\t" + "O(∩_∩)O哈哈~ 耗时" + timeNumber + "s";
     }
 
@@ -55,14 +47,14 @@ public class PaymentService {
     }
 
 
-    //====服务熔断
+    //================================服务熔断
     @HystrixCommand(fallbackMethod = "paymentCircuitBreaker_fallback", commandProperties = {
             @HystrixProperty(name = "circuitBreaker.enabled", value = "true"),  // 是否开启断路器
             @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),  // 请求次数
             @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "10000"),   // 时间窗口期
             @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60"),   // 失败率达到多少跳闸
     })
-    public String paymentCircuitBreaker(@PathVariable("id") Integer id) {
+    public String paymentCircuitBreaker(Integer id) {
         if (id < 0) {
             throw new RuntimeException("****id 不能为负数");
         }
